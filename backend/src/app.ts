@@ -2,9 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import { errorHandler } from "./middlewares/error.middleware";
-import { logMiddleware } from "./middlewares/log.middleware";
 import SnippetRouter from "./routes/snippets.routes";
-import LogRouter from "./routes/logs.routes";
 import mongoose from "mongoose";
 import { rateLimiter } from "./middlewares/rateLimit.middleware";
 
@@ -21,17 +19,11 @@ app.use(cors());
 // Serve Static page on / path
 app.use(express.static("./public"));
 
-// Logger Midleware
-app.use(logMiddleware);
-
 // rate limitter
 app.use(rateLimiter);
 
 // Your Routes here
 app.use("/snippets", SnippetRouter);
-
-// Route to retrieve logs
-app.use("/logs", LogRouter);
 
 // Handle Error in Routes
 app.use(errorHandler);
