@@ -14,21 +14,20 @@ const UsagePopup = ({ content = "" }: { content?: string }) => {
       rounded={"md"}
       _hover={{
         _after: {
-          content: `"${content}"`,
-          w: ["200px", "300px"],
           h: ["min-content"],
           color: "light.200",
           bgColor: "dark.200",
+          py: 2,
+          px: 4,
         },
       }}
       _after={{
-        content: `"."`,
+        content: `"${content}"`,
         color: "transparent",
-        w: "0px",
+        w: ["200px", "300px"],
         h: "0px",
         pos: "absolute",
-        py: 2,
-        px: 4,
+
         transition: "450ms",
         top: "100%",
         right: "100%",
