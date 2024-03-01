@@ -17,11 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 // Parse JSON data
 app.use(express.json());
 // Setup Cors
-app.use(
-  cors({
-    origin: [process.env.DEV_ORIGIN || "", process.env.PROD_ORIGIN || ""],
-  })
-);
+app.use(cors());
 // Serve Static page on / path
 app.use(express.static("./public"));
 
