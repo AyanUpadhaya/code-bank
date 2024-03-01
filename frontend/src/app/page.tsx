@@ -20,7 +20,7 @@ export default function Home() {
         <CustomButton title="Get Started" variant="blue-solid" link="/snippets-page" target="_self">
           <FaArrowRight />
         </CustomButton>
-        <CustomButton title="GitHub" variant="grey-solid" link="#" target="_blank">
+        <CustomButton title="GitHub" variant="grey-solid" link="https://github.com/sayshark75/code-bank" target="_blank">
           <SiGithub />
         </CustomButton>
       </Flex>

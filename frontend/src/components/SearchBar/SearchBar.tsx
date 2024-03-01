@@ -1,9 +1,10 @@
 "use client";
-import { Flex, IconButton, Input } from "@chakra-ui/react";
+import { Box, Flex, Input } from "@chakra-ui/react";
 import { MdSearch } from "react-icons/md";
 import ThemeChanger from "../ThemeChanger/ThemeChanger";
+import { SearchBarType } from "@/TYPES";
 
-const SearchBar = () => {
+const SearchBar = ({ value = "", onChange = () => {} }: SearchBarType) => {
   return (
     <Flex
       pos={"fixed"}
@@ -32,8 +33,12 @@ const SearchBar = () => {
           autoComplete="search"
           variant={"unstyled"}
           pl={5}
+          value={value}
+          onChange={onChange}
         />
-        <IconButton rounded={"none"} bgColor={"light.200"} icon={<MdSearch />} aria-label="Search Icon Button" />
+        <Box p={3}>
+          <MdSearch />
+        </Box>
       </Flex>
       <ThemeChanger />
     </Flex>

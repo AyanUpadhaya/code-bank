@@ -1,21 +1,6 @@
 import { ReactNode } from "react";
 import { IconType } from "react-icons";
 
-export type componentsDataType = {
-  title: string;
-  id: string;
-  code: {
-    "js-code": string;
-    "ts-code": string;
-  };
-  usage: string;
-  "creation-guide": string;
-  "visual-code": string;
-  "date-created": string;
-  "date-modified": string;
-  image: string;
-};
-
 export type LinkType = {
   title: string;
   link: string;
@@ -36,6 +21,8 @@ export type SnippetDataType = {
   tags?: string[];
   author?: string;
   language?: string | undefined;
+  delete?: boolean;
+  description?: string;
 };
 
 export interface CodeHighlighterProps {
@@ -43,6 +30,13 @@ export interface CodeHighlighterProps {
   code: string;
   title: string;
 }
+
+export type SearchBarType = {
+  value: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
+export type RequestSnippetType = { message: string; snippets: SnippetDataType[]; status: boolean };
 
 // | "abap"
 //     | "abnf"

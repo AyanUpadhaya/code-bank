@@ -5,12 +5,14 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialDark, coy } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { MdContentCopy, MdOutlineCheckCircle, MdCode, MdKeyboard } from "react-icons/md";
 import { CodeHighlighterProps, SnippetDataType } from "@/TYPES";
+import UsagePopup from "./UsagePopup";
 
 const CodeHighlighter: React.FC<CodeHighlighterProps> = ({
   title = "",
   author = "SayShark",
   code = "",
   language = "jsx",
+  description = "",
 }: SnippetDataType) => {
   const { colorMode } = useColorMode();
   const [isCopy, setIsCopy] = useState<boolean>(false);
@@ -49,28 +51,31 @@ const CodeHighlighter: React.FC<CodeHighlighterProps> = ({
             </Text>
           </Text>
 
-          {isCopy ? (
-            <IconButton
-              fontSize={"16px"}
-              bgColor={"transparent"}
-              border={"1px solid"}
-              borderColor={"light.300"}
-              rounded={"md"}
-              icon={<MdOutlineCheckCircle />}
-              aria-label="Copy The Code"
-            />
-          ) : (
-            <IconButton
-              fontSize={"16px"}
-              bgColor={"transparent"}
-              border={"1px solid"}
-              borderColor={"light.300"}
-              rounded={"md"}
-              icon={<MdContentCopy />}
-              onClick={() => setIsCopy(true)}
-              aria-label="Copy The Code"
-            />
-          )}
+          <Flex justifyContent={"center"} gap={4} alignItems={"center"}>
+            {description && <UsagePopup content={description} />}
+            {isCopy ? (
+              <IconButton
+                fontSize={"16px"}
+                bgColor={"transparent"}
+                border={"1px solid"}
+                borderColor={"light.300"}
+                rounded={"md"}
+                icon={<MdOutlineCheckCircle />}
+                aria-label="Copy The Code"
+              />
+            ) : (
+              <IconButton
+                fontSize={"16px"}
+                bgColor={"transparent"}
+                border={"1px solid"}
+                borderColor={"light.300"}
+                rounded={"md"}
+                icon={<MdContentCopy />}
+                onClick={() => setIsCopy(true)}
+                aria-label="Copy The Code"
+              />
+            )}
+          </Flex>
         </Flex>
         <Box overflow={"hidden"} fontSize={["12px", "12px", "14px", "16px"]}>
           <Box
