@@ -19,8 +19,8 @@ const CodeHighlighter: React.FC<CodeHighlighterProps> = ({
 
   useEffect(() => {
     if (isCopy) {
+      window.navigator.clipboard.writeText(code);
       setTimeout(() => {
-        window.navigator.clipboard.writeText(code);
         setIsCopy(false);
       }, 2000);
     }
