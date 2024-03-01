@@ -15,6 +15,10 @@ interface Snippet extends Document {
     type: BooleanConstructor;
     default: boolean;
   };
+  description: {
+    type: StringConstructor;
+    default: string;
+  };
 }
 
 const SnippetModel = mongoose.model<Snippet>(
@@ -44,6 +48,10 @@ const SnippetModel = mongoose.model<Snippet>(
       deleted: {
         type: Boolean,
         default: false,
+      },
+      description: {
+        type: String,
+        default: "",
       },
     },
     { timestamps: true }
