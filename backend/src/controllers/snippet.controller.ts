@@ -41,10 +41,8 @@ export const SnippetController = {
 
   deleteSnippet: async (req: Request, res: Response, next: NextFunction) => {
     const id: string = req.params.id;
-    console.log("id: ", id);
     try {
       const deletedSnippet: Snippet | null = await snippetService.deleteSnippet(id);
-      console.log("deletedSnippet: ", deletedSnippet);
       if (!deletedSnippet || deletedSnippet.deleted) {
         const exception = new Error("Snippet Not Found");
         exception.name = "NotFound";
