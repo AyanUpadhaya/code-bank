@@ -18,7 +18,10 @@ router.patch("/:id", SnippetController.updateSnippet);
 // Delete a snippet using id
 router.delete("/:id", SnippetController.deleteSnippet);
 
-// Get specific snippets using title and tags
+// Get public specific snippets using title and tags
 router.get("/search", SnippetController.searchSnippets);
+
+// Get all specific snippets using title and tags
+router.get("/searchall", SnippetController.searchAllSnippets);
 
 export default router;

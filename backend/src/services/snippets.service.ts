@@ -32,6 +32,13 @@ const snippetService = {
     }).exec();
     return snippets;
   },
+
+  searchAllSnippets: async (searchString: string): Promise<Snippet[]> => {
+    const snippets: Snippet[] = await SnippetModel.find({
+      $or: [{ title: { $regex: new RegExp(searchString, "i") } }, { tags: { $regex: new RegExp(searchString, "i") } }],
+    }).exec();
+    return snippets;
+  },
 };
 
 export default snippetService;

@@ -65,6 +65,16 @@ export const SnippetController = {
     }
   },
 
+  searchAllSnippets: async (req: Request, res: Response, next: NextFunction) => {
+    const searchString: string = req.query.q as string;
+    try {
+      const snippets: Snippet[] = await snippetService.searchAllSnippets(searchString);
+      res.json({ message: "Searching Success", snippets, status: true });
+    } catch (error) {
+      next(error);
+    }
+  },
+
   searchSnippets: async (req: Request, res: Response, next: NextFunction) => {
     const searchString: string = req.query.q as string;
     try {
