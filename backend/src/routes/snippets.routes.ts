@@ -1,11 +1,13 @@
-import express, { NextFunction, Request, Response } from "express";
-import { SnippetModel, Snippet } from "../models/snippet.model";
+import express from "express";
 import { SnippetController } from "../controllers/snippet.controller";
 
 const router = express.Router();
 
-// Get all snippets
-router.get("/", SnippetController.getAllSnippets);
+// Get public snippets
+router.get("/", SnippetController.getSnippets);
+
+// Get All Snippets
+router.get("/all", SnippetController.getAllSnippets);
 
 // Post a new snippet
 router.post("/", SnippetController.saveNewSnippet);

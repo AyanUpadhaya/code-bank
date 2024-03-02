@@ -2,6 +2,10 @@ import { SnippetModel, Snippet } from "../models/snippet.model";
 
 const snippetService = {
   getAllSnippets: async (): Promise<Snippet[]> => {
+    return SnippetModel.find({}).exec();
+  },
+
+  getSnippets: async (): Promise<Snippet[]> => {
     return SnippetModel.find({ deleted: { $ne: true } }).exec();
   },
 
@@ -13,8 +17,8 @@ const snippetService = {
     return SnippetModel.findByIdAndUpdate(id, updatedSnippet, { new: true }).exec();
   },
 
-  deleteSnippet: async (id: string): Promise<Snippet | null> => {
-    return SnippetModel.findByIdAndUpdate(id, { deleted: true }, { new: true }).exec();
+  deleteSnippet: async (id: string, isDelete: boolean): Promise<Snippet | null> => {
+    return SnippetModel.findByIdAndUpdate(id, { deleted: isDelete }, { new: true }).exec();
   },
 
   searchSnippets: async (searchString: string): Promise<Snippet[]> => {

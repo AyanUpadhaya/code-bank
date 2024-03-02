@@ -3,6 +3,15 @@ import { Snippet } from "../models/snippet.model";
 import snippetService from "../services/snippets.service";
 
 export const SnippetController = {
+  getSnippets: async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const snippets: Snippet[] = await snippetService.getSnippets();
+      res.json({ message: "Retrieval Success", data: snippets, status: true });
+    } catch (error) {
+      next(error);
+    }
+  },
+
   getAllSnippets: async (req: Request, res: Response, next: NextFunction) => {
     try {
       const snippets: Snippet[] = await snippetService.getAllSnippets();
@@ -41,8 +50,9 @@ export const SnippetController = {
 
   deleteSnippet: async (req: Request, res: Response, next: NextFunction) => {
     const id: string = req.params.id;
+    const { deleted } = req.body;
     try {
-      const deletedSnippet: Snippet | null = await snippetService.deleteSnippet(id);
+      const deletedSnippet: Snippet | null = await snippetService.deleteSnippet(id, deleted);
       if (!deletedSnippet || deletedSnippet.deleted) {
         const exception = new Error("Snippet Not Found");
         exception.name = "NotFound";
