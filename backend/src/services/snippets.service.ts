@@ -23,7 +23,12 @@ const snippetService = {
 
   searchSnippets: async (searchString: string): Promise<Snippet[]> => {
     const snippets: Snippet[] = await SnippetModel.find({
-      $or: [{ title: { $regex: new RegExp(searchString, "i") } }, { tags: { $regex: new RegExp(searchString, "i") } }],
+      $and: [
+        {
+          $or: [{ title: { $regex: new RegExp(searchString, "i") } }, { tags: { $regex: new RegExp(searchString, "i") } }],
+        },
+        { deleted: { $ne: true } },
+      ],
     }).exec();
     return snippets;
   },
