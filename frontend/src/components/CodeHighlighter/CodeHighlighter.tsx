@@ -6,6 +6,7 @@ import { materialDark, coy } from "react-syntax-highlighter/dist/esm/styles/pris
 import { MdContentCopy, MdOutlineCheckCircle, MdCode, MdKeyboard } from "react-icons/md";
 import { CodeHighlighterProps, SnippetDataType } from "@/TYPES";
 import UsagePopup from "./UsagePopup";
+import { decodeString } from "@/helpers/decodeString";
 
 const CodeHighlighter: React.FC<CodeHighlighterProps> = ({
   title = "",
@@ -82,17 +83,17 @@ const CodeHighlighter: React.FC<CodeHighlighterProps> = ({
             overflow={"auto"}
             sx={{
               "> pre": {
-                whiteSpace: "pre-wrap",
+                whiteSpace: "pre",
                 bgColor: "red",
               },
               ">pre>code": {
-                whiteSpace: "pre-wrap",
+                whiteSpace: "pre",
                 p: "0px !important",
               },
             }}
           >
             <SyntaxHighlighter showLineNumbers language={language} style={colorMode === "light" ? coy : materialDark}>
-              {code.replaceAll("&quot;", '"')}
+              {decodeString(code)}
             </SyntaxHighlighter>
           </Box>
         </Box>
