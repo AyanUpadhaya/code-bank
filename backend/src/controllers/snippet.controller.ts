@@ -36,10 +36,8 @@ export const SnippetController = {
     const updatedSnippet: Partial<Snippet> = req.body;
     try {
       const snippet: Snippet | null = await snippetService.updateSnippet(id, updatedSnippet);
-      if (!snippet || snippet.deleted) {
-        const exception = new Error("Snippet Not Found");
-        exception.name = "NotFound";
-        next(exception);
+      if (!snippet) {
+        res.status(200).json({ message: "Snippet Not Found", status: true });
         return;
       }
       res.json({ message: "Update Success", data: snippet, status: true });
@@ -53,10 +51,8 @@ export const SnippetController = {
     const { deleted } = req.body;
     try {
       const deletedSnippet: Snippet | null = await snippetService.deleteSnippet(id, deleted);
-      if (!deletedSnippet || deletedSnippet.deleted) {
-        const exception = new Error("Snippet Not Found");
-        exception.name = "NotFound";
-        next(exception);
+      if (!deletedSnippet) {
+        res.status(200).json({ message: "Snippet Not Found", status: true });
         return;
       }
       res.status(200).json({ message: "Deletion Success", status: true });
