@@ -39,7 +39,7 @@ const CodeHighlighter: React.FC<CodeHighlighterProps> = ({
             alignItems={["flex-start", "flex-start", "center"]}
             gap={2}
             fontSize={["12px", "12px", "18px"]}
-            textTransform={"lowercase"}
+            textTransform={"capitalize"}
           >
             <Text as={Flex} alignItems={"center"} gap={2}>
               {title}{" "}
