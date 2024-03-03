@@ -6,7 +6,7 @@ import { materialDark, coy } from "react-syntax-highlighter/dist/esm/styles/pris
 import { MdContentCopy, MdOutlineCheckCircle, MdCode, MdKeyboard } from "react-icons/md";
 import { CodeHighlighterProps, SnippetDataType } from "@/TYPES";
 import UsagePopup from "./UsagePopup";
-import { decodeString } from "@/helpers/decodeString";
+import { decodeString } from "@/helpers/formatString";
 
 const CodeHighlighter: React.FC<CodeHighlighterProps> = ({
   title = "",
