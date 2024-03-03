@@ -39,7 +39,7 @@ const CodeHighlighter: React.FC<CodeHighlighterProps> = ({
             alignItems={["flex-start", "flex-start", "center"]}
             gap={2}
             fontSize={["12px", "12px", "18px"]}
-            textTransform={"capitalize"}
+            textTransform={"lowercase"}
           >
             <Text as={Flex} alignItems={"center"} gap={2}>
               {title}{" "}
@@ -81,6 +81,7 @@ const CodeHighlighter: React.FC<CodeHighlighterProps> = ({
         <Box overflow={"hidden"} fontSize={["12px", "12px", "14px", "16px"]}>
           <Box
             overflow={"auto"}
+            maxH={"400px"}
             sx={{
               "> pre": {
                 whiteSpace: "pre",

@@ -6,7 +6,7 @@ import AlertBox from "./AlertBox";
 const UsagePopup = ({ content = "" }: { content?: string }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Flex minW={"100px"} fontSize={"24px"} gap={2} justifyContent={"center"} alignItems={"center"}>
+    <Flex fontSize={"24px"} gap={2} justifyContent={"center"} alignItems={"center"}>
       <IconButton fontSize={"24px"} icon={<MdMessage />} aria-label="Document Popup Button" onClick={onOpen} />
       <AlertBox isOpen={isOpen} onClose={onClose} content={content} />
     </Flex>

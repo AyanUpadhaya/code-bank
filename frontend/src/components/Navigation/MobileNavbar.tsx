@@ -11,6 +11,10 @@ const MobileNavbar = () => {
   return (
     <Flex
       w={"100%"}
+      pos={"fixed"}
+      top={"0px"}
+      left={"0px"}
+      zIndex={4}
       h={"max-content"}
       px={"16px"}
       py={"10px"}

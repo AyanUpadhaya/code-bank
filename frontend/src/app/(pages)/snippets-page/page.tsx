@@ -69,7 +69,7 @@ const SnippetsPage = () => {
       direction={["column", "column", "column", "column", "row"]}
     >
       <Navigation />
-      <Flex w={"100%"} direction={"column"} pt={[0, 0, 0, 0, "56px", "64px"]}>
+      <Flex w={"100%"} direction={"column"} pt={["56px", "64px"]}>
         <SearchBar
           value={searchQuery}
           onChange={(event) => {
